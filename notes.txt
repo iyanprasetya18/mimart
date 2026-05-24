@@ -15,3 +15,196 @@ http://localhost:3000
 
 Backend:
 http://localhost:5000
+
+
+Berikut cara paling aman dan paling umum untuk upload project Next.js + backend kamu ke GitHub lalu deploy frontend ke Vercel.
+
+1. Struktur Project yang Disarankan
+
+Misalnya:
+
+kakaoshop/
+├── backend/
+├── frontend/
+frontend = Next.js
+backend = Express API
+2. Install Git
+
+Download:
+
+Git SCM
+
+Install → restart terminal.
+
+3. Login GitHub
+
+Buat akun di:
+
+GitHub
+
+4. Buat Repository Baru
+
+Di GitHub:
+
+klik New Repository
+nama:
+kakaoshop
+
+Jangan checklist README dulu.
+
+5. Init Git di Project
+
+Buka terminal di folder:
+
+D:\install\xampp\htdocs\kakaoshop
+
+Lalu:
+
+git init
+6. Buat .gitignore
+
+Di root project buat file:
+
+.gitignore
+
+Isi:
+
+node_modules
+.next
+.env
+dist
+build
+coverage
+7. Commit Project
+git add .
+git commit -m "first commit"
+8. Hubungkan ke GitHub
+
+Ganti USERNAME dengan username GitHub kamu.
+
+git remote add origin https://github.com/USERNAME/kakaoshop.git
+9. Push ke GitHub
+git branch -M main
+git push -u origin main
+
+Kalau diminta login:
+
+login browser GitHub
+authorize Git
+
+Selesai → project sudah ada di GitHub.
+
+10. Deploy Frontend ke Vercel
+
+Buka:
+
+Vercel
+
+Login menggunakan GitHub.
+
+11. Import Project
+
+Klik:
+
+Add New Project
+
+Pilih repo:
+
+kakaoshop
+12. IMPORTANT — Root Directory
+
+Karena frontend ada di folder frontend, maka:
+
+Di Vercel:
+
+Root Directory = frontend
+
+INI SANGAT PENTING.
+
+13. Framework
+
+Vercel otomatis detect:
+
+Next.js
+14. Environment Variable
+
+Kalau frontend pakai API backend:
+
+Tambahkan di Vercel:
+
+NEXT_PUBLIC_API_URL=https://api-domain-kamu.com/api
+15. Deploy
+
+Klik:
+
+Deploy
+
+Tunggu selesai.
+
+16. Hasil
+
+Frontend akan dapat domain seperti:
+
+https://kakaoshop.vercel.app
+17. Backend Deploy
+
+Karena backend Express tidak cocok di Vercel biasa, deploy ke:
+
+Pilihan bagus:
+
+Railway
+Render
+Fly.io
+
+Saya sarankan:
+
+frontend → Vercel
+backend → Railway
+18. Railway Backend Deploy
+
+Masuk:
+
+Railway
+
+Lalu:
+
+Login GitHub
+New Project
+Deploy from GitHub repo
+pilih kakaoshop
+
+IMPORTANT:
+set root directory:
+
+backend
+19. Environment Backend
+
+Tambahkan:
+
+DATABASE_URL=
+JWT_SECRET=
+PORT=3001
+20. Update Frontend API
+
+Di frontend:
+
+NEXT_PUBLIC_API_URL=https://backend-production.up.railway.app/api
+21. Redeploy Frontend
+
+Vercel akan otomatis redeploy.
+
+22. Workflow Kedepan
+
+Kalau update project:
+
+git add .
+git commit -m "update"
+git push
+
+Maka:
+
+GitHub update
+Vercel auto deploy
+Railway auto deploy
+
+langsung otomatis.
