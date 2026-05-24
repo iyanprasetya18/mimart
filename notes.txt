@@ -1,0 +1,17 @@
+Email: admin@gmail.com
+Password: admin123
+
+28. RUN BACKEND
+cd backend
+npm run dev
+
+29. RUN FRONTEND
+cd frontend
+npm run dev
+
+30. URL
+Frontend:
+http://localhost:3000
+
+Backend:
+http://localhost:5000
